@@ -12,13 +12,13 @@ WORKDIR /build
 
 ADD go.mod .
 
-ADD go.sum .
+# ADD go.sum .
 
 RUN go mod download
 
 COPY . .
 
-RUN go build -ldflags="-s -w" -o /app/go-to-the-rest . /main.go
+RUN go build -ldflags="-s -w" -o /app/go-to-the-rest ./main.go
 
 FROM alpine:3.19
 
