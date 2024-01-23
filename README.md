@@ -32,7 +32,7 @@ nano config/config.json
 docker build --tag go-to-the-rest .
 ```
 
-* Собрать docker контейнер:
+* Запустить docker контейнер и отправить REST запрос:
 
 ```shell
 docker run -it -v ${PWD}/config:/app/config go-to-the-rest /app/go-to-the-rest
@@ -55,8 +55,7 @@ echo '{ "url": "http://localhost:8000/api/v1/test/", "method": "POST", "token": 
 * Перейти в папку проекта и создать файл docker-compose.yml
 
 ```shell
-cd myproject
-nano docker-compose.yml
+cd myproject && nano docker-compose.yml
 ```
 
 ```yaml
