@@ -17,7 +17,7 @@ type Config struct {
 
 func main() {
 	// Read config.json
-	data, err := os.ReadFile("config.json")
+	data, err := os.ReadFile("config/config.json")
 	if err != nil {
 		panic(err)
 	}

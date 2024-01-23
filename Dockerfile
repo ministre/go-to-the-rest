@@ -12,8 +12,6 @@ WORKDIR /build
 
 ADD go.mod .
 
-# ADD go.sum .
-
 RUN go mod download
 
 ADD main.go .
@@ -32,14 +30,4 @@ WORKDIR /app
 
 COPY --from=builder /app/go-to-the-rest /app/go-to-the-rest
 
-ENV URL=URL
-ENV METHOD=METHOD
-ENV TOKEN=TOKEN
-
-RUN echo '{' >> /app/config.json && \
-    echo '  "url": "$URL",' >> /app/config.json && \
-    echo '  "method": "$METHOD",' >> /app/config.json && \
-    echo '  "token": "$TOKEN"' >> /app/config.json && \
-    echo '}' >> /app/config.json
-
-# CMD [". /go-to-the-rest"]
+RUN chmod +x ./go-to-the-rest
