@@ -66,14 +66,15 @@ services:
   task-bot:
     container_name: go-to-the-rest
     image: ministre/go-to-the-rest:1.0-alpine
+    command: /app/go-to-the-rest
     volumes:
       - ./config:/app/config/
 ```
 
-* Собрать контейнер
+* Собрать проект
 
 ```shell
-docker compose up --build
+docker compose up -d --build
 ```
 
 ### Вариант 3: Скомпилированное приложение
@@ -86,4 +87,26 @@ docker compose up --build
 
 ## Запуск в cron
 
+Отправка REST запроса каждый день в 4 утра.
+
+Выполнить команду:
+
+```shell
+sudo crontab -e
+```
+
+Для варианта 1 выполнить команду:
+
 ...
+
+Для варианта 2 выполнить команду:
+
+```cronexp
+4 0 * * * docker restart go-to-the-rest
+```
+
+Перезапустить cron:
+
+```shell
+sudo service cron reload
+```
