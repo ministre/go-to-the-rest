@@ -55,7 +55,7 @@ echo '{ "url": "http://localhost:8000/api/v1/test/", "method": "POST", "token": 
 * Перейти в папку проекта и создать файл docker-compose.yml
 
 ```shell
-cd myproject/config
+cd myproject
 nano docker-compose.yml
 ```
 
