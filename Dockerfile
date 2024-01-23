@@ -16,7 +16,7 @@ ADD go.mod .
 
 RUN go mod download
 
-COPY . .
+ADD main.go .
 
 RUN go build -ldflags="-s -w" -o /app/go-to-the-rest ./main.go
 
@@ -32,4 +32,14 @@ WORKDIR /app
 
 COPY --from=builder /app/go-to-the-rest /app/go-to-the-rest
 
-CMD [". /go-to-the-rest"]
+ENV URL=URL
+ENV METHOD=METHOD
+ENV TOKEN=TOKEN
+
+RUN echo '{' >> /app/config.json && \
+    echo '  "url": "$URL",' >> /app/config.json && \
+    echo '  "method": "$METHOD",' >> /app/config.json && \
+    echo '  "token": "$TOKEN"' >> /app/config.json && \
+    echo '}' >> /app/config.json
+
+# CMD [". /go-to-the-rest"]

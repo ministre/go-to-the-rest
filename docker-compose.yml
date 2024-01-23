@@ -1,0 +1,13 @@
+version: '3'
+
+services:
+
+  app:
+    container_name: "go-to-the-rest"
+    build: .
+    image: go-to-the-rest:1.0.0
+    command: ./go-to-the-rest
+    environment:
+      URL: "http://localhost/"
+      METHOD: "POST"
+      TOKEN: "54321"
