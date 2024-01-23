@@ -38,7 +38,7 @@ docker build --tag go-to-the-rest .
 docker run -it -v ${PWD}/config:/app/config go-to-the-rest /app/go-to-the-rest
 ```
 
-### Запуск в docker-compose.yml
+### Вариант 2: Загрузка с Docker Hub и запуск через docker-compose.yml
 
 * Создать папку конфигурации
 
